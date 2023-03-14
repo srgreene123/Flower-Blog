@@ -39,6 +39,7 @@ export const App = () => {
   return (
     <BrowserRouter basename={baseHref}>
       <div className="app-container" style={{ paddingTop }}>
+        <Footer />
         <ToastContainer position={toast.POSITION.TOP_LEFT} className="toastify-container" toastClassName="toastify-toast" />
         <ErrorBoundary>
           <Header
@@ -56,7 +57,6 @@ export const App = () => {
               <AppRoutes />
             </ErrorBoundary>
           </Card>
-          <Footer />
         </div>
       </div>
     </BrowserRouter>
