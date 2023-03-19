@@ -1,0 +1,29 @@
+{
+  "blogApp": {
+    "flower": {
+      "home": {
+        "title": "Flowers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Flower",
+        "createOrEditLabel": "Create or edit a Flower",
+        "notFound": "No Flowers found"
+      },
+      "created": "A new Flower is created with identifier {{ param }}",
+      "updated": "A Flower is updated with identifier {{ param }}",
+      "deleted": "A Flower is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Flower {{ id }}?"
+      },
+      "detail": {
+        "title": "Flower"
+      },
+      "id": "ID",
+      "name": "Name",
+      "season": "Season",
+      "description": "Description",
+      "imageLink": "Image Link",
+      "post": "Post",
+      "location": "Location"
+    }
+  }
+}

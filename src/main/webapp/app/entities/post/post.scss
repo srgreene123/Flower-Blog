@@ -1,0 +1,25 @@
+.navBarTitleName {
+  font-size: larger;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-kerning: normal;
+  text-align: center;
+  font-size: 50px;
+}
+
+th {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-kerning: normal;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.createNewPostButton {
+  color: black;
+  background-color: #f7e3e3;
+  &:hover {
+    text-decoration: none;
+    background-color: darken(#f7e3e3, 5%);
+    color: black;
+  }
+}

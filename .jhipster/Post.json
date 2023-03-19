@@ -1,0 +1,38 @@
+{
+  "applications": ["blog"],
+  "changelogDate": "20230314161341",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "post",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Post",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "flower",
+      "otherEntityRelationshipName": "post",
+      "ownerSide": false,
+      "relationshipName": "flower",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

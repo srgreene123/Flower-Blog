@@ -1,0 +1,32 @@
+{
+  "applications": ["blog"],
+  "changelogDate": "20230314161342",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "location",
+  "fields": [
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "countryName",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Location",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "flower",
+      "otherEntityRelationshipName": "location",
+      "ownerSide": false,
+      "relationshipName": "flower",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}
