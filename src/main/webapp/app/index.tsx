@@ -10,6 +10,7 @@ import { clearAuthentication } from 'app/shared/reducers/authentication';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import AppComponent from 'app/app';
 import { loadIcons } from 'app/config/icon-loader';
+import { ChakraProvider } from '@chakra-ui/react';
 
 const store = getStore();
 registerLocale(store);
@@ -24,13 +25,15 @@ const root = createRoot(rootEl);
 
 const render = Component =>
   root.render(
-    <ErrorBoundary>
-      <Provider store={store}>
-        <div>
-          <Component />
-        </div>
-      </Provider>
-    </ErrorBoundary>
+    <ChakraProvider>
+      <ErrorBoundary>
+        <Provider store={store}>
+          <div>
+            <Component />
+          </div>
+        </Provider>
+      </ErrorBoundary>
+    </ChakraProvider>
   );
 
 render(AppComponent);

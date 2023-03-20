@@ -7,7 +7,7 @@ export interface IFlower {
   season?: string | null;
   description?: string | null;
   imageLink?: string | null;
-  post?: IPost | null;
+  posts?: IPost[] | null;
   locations?: ILocation[] | null;
 }
 

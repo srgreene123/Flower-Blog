@@ -57,10 +57,6 @@ export const FlowerDetail = () => {
           </dt>
           <dd>{flowerEntity.imageLink}</dd>
           <dt>
-            <Translate contentKey="blogApp.flower.post">Post</Translate>
-          </dt>
-          <dd>{flowerEntity.post ? flowerEntity.post.id : ''}</dd>
-          <dt>
             <Translate contentKey="blogApp.flower.location">Location</Translate>
           </dt>
           <dd>

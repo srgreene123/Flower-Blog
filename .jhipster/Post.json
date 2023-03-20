@@ -29,9 +29,9 @@
     {
       "otherEntityName": "flower",
       "otherEntityRelationshipName": "post",
-      "ownerSide": false,
+      "ownerSide": true,
       "relationshipName": "flower",
-      "relationshipType": "one-to-one"
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "no"
