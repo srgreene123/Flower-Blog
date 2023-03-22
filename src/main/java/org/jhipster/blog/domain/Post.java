@@ -31,8 +31,8 @@ public class Post implements Serializable {
     @ManyToOne
     private User user;
 
-    @JsonIgnoreProperties(value = { "post", "locations" }, allowSetters = true)
-    @OneToOne(mappedBy = "post")
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "posts", "locations" }, allowSetters = true)
     private Flower flower;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -94,12 +94,6 @@ public class Post implements Serializable {
     }
 
     public void setFlower(Flower flower) {
-        if (this.flower != null) {
-            this.flower.setPost(null);
-        }
-        if (flower != null) {
-            flower.setPost(this);
-        }
         this.flower = flower;
     }
 

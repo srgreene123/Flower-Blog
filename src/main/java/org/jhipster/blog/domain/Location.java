@@ -32,7 +32,7 @@ public class Location implements Serializable {
 
     @ManyToMany(mappedBy = "locations")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "post", "locations" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "posts", "locations" }, allowSetters = true)
     private Set<Flower> flowers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

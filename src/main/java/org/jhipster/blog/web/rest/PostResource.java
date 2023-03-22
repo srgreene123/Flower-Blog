@@ -5,8 +5,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import org.jhipster.blog.domain.Post;
 import org.jhipster.blog.repository.PostRepository;
 import org.jhipster.blog.web.rest.errors.BadRequestAlertException;
@@ -142,26 +140,15 @@ public class PostResource {
      * {@code GET  /posts} : get all the posts.
      *
      * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of posts in body.
      */
     @GetMapping("/posts")
-    public List<Post> getAllPosts(
-        @RequestParam(required = false) String filter,
-        @RequestParam(required = false, defaultValue = "false") boolean eagerload
-    ) {
-        if ("flower-is-null".equals(filter)) {
-            log.debug("REST request to get all Posts where flower is null");
-            return StreamSupport
-                .stream(postRepository.findAll().spliterator(), false)
-                .filter(post -> post.getFlower() == null)
-                .collect(Collectors.toList());
-        }
+    public List<Post> getAllPosts(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Posts");
         if (eagerload) {
             return postRepository.findAllWithEagerRelationships();
         } else {
-            return postRepository.findByUserIsCurrentUser();
+            return postRepository.findAll();
         }
     }
 

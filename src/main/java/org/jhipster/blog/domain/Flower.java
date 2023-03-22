@@ -36,10 +36,10 @@ public class Flower implements Serializable {
     @Column(name = "image_link")
     private String imageLink;
 
+    @OneToMany(mappedBy = "flower")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "user", "flower" }, allowSetters = true)
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Post post;
+    private Set<Post> posts = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -118,16 +118,34 @@ public class Flower implements Serializable {
         this.imageLink = imageLink;
     }
 
-    public Post getPost() {
-        return this.post;
+    public Set<Post> getPosts() {
+        return this.posts;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setPosts(Set<Post> posts) {
+        if (this.posts != null) {
+            this.posts.forEach(i -> i.setFlower(null));
+        }
+        if (posts != null) {
+            posts.forEach(i -> i.setFlower(this));
+        }
+        this.posts = posts;
     }
 
-    public Flower post(Post post) {
-        this.setPost(post);
+    public Flower posts(Set<Post> posts) {
+        this.setPosts(posts);
+        return this;
+    }
+
+    public Flower addPost(Post post) {
+        this.posts.add(post);
+        post.setFlower(this);
+        return this;
+    }
+
+    public Flower removePost(Post post) {
+        this.posts.remove(post);
+        post.setFlower(null);
         return this;
     }
 

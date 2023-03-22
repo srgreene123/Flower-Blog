@@ -48,6 +48,10 @@ export const PostDetail = () => {
             <Translate contentKey="blogApp.post.user">User</Translate>
           </dt>
           <dd>{postEntity.user ? postEntity.user.login : ''}</dd>
+          <dt>
+            <Translate contentKey="blogApp.post.flower">Flower</Translate>
+          </dt>
+          <dd>{postEntity.flower ? postEntity.flower.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/post" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

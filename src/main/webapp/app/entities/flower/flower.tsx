@@ -64,9 +64,6 @@ export const Flower = () => {
                   <Translate contentKey="blogApp.flower.imageLink">Image Link</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="blogApp.flower.post">Post</Translate>
-                </th>
-                <th>
                   <Translate contentKey="blogApp.flower.location">Location</Translate>
                 </th>
                 <th />
@@ -84,6 +81,16 @@ export const Flower = () => {
                   <td>{flower.season}</td>
                   <td>{flower.description}</td>
                   <td>{flower.imageLink}</td>
+                  <td>
+                    {flower.locations
+                      ? flower.locations.map((val, j) => (
+                          <span key={j}>
+                            <Link to={`/location/${val.id}`}>{val.id}</Link>
+                            {j === flower.locations.length - 1 ? '' : ', '}
+                          </span>
+                        ))
+                      : null}
+                  </td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/flower/${flower.id}`} color="info" size="sm" data-cy="entityDetailsButton">
@@ -105,17 +112,6 @@ export const Flower = () => {
                         </span>
                       </Button>
                     </div>
-                  </td>
-                  <td>{flower.post ? <Link to={`/post/${flower.post.id}`}>{flower.post.id}</Link> : ''}</td>
-                  <td>
-                    {flower.locations
-                      ? flower.locations.map((val, j) => (
-                          <span key={j}>
-                            <Link to={`/location/${val.id}`}>{val.id}</Link>
-                            {j === flower.locations.length - 1 ? '' : ', '}
-                          </span>
-                        ))
-                      : null}
                   </td>
                 </tr>
               ))}

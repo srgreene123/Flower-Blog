@@ -8,12 +8,6 @@
     -->
     <changeSet id="20230314161343-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="post_id"
-                                 baseTableName="flower"
-                                 constraintName="fk_flower__post_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="post"/>
-
         <addForeignKeyConstraint baseColumnNames="flower_id"
                                  baseTableName="rel_flower__location"
                                  constraintName="fk_rel_flower__location__flower_id"

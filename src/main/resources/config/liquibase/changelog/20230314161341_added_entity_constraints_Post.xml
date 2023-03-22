@@ -13,5 +13,11 @@
                                  constraintName="fk_post__user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="flower_id"
+                                 baseTableName="post"
+                                 constraintName="fk_post__flower_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="flower"/>
     </changeSet>
 </databaseChangeLog>
