@@ -6,7 +6,7 @@ export interface IPost {
   name?: string | null;
   date?: string | null;
   user?: IUser | null;
-  flower?: IFlower | null;
+  flowers?: IFlower[] | null;
 }
 
 export const defaultValue: Readonly<IPost> = {};

@@ -54,6 +54,7 @@ public class CacheConfiguration {
             createCache(cm, org.jhipster.blog.domain.Flower.class.getName());
             createCache(cm, org.jhipster.blog.domain.Flower.class.getName() + ".locations");
             createCache(cm, org.jhipster.blog.domain.Flower.class.getName() + ".posts");
+            createCache(cm, org.jhipster.blog.domain.Post.class.getName() + ".flowers");
             // jhipster-needle-ehcache-add-entry
         };
     }

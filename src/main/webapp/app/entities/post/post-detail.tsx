@@ -51,7 +51,16 @@ export const PostDetail = () => {
           <dt>
             <Translate contentKey="blogApp.post.flower">Flower</Translate>
           </dt>
-          <dd>{postEntity.flower ? postEntity.flower.id : ''}</dd>
+          <dd>
+            {postEntity.flowers
+              ? postEntity.flowers.map((val, i) => (
+                  <span key={val.id}>
+                    <a>{val.id}</a>
+                    {postEntity.flowers && i === postEntity.flowers.length - 1 ? '' : ', '}
+                  </span>
+                ))
+              : null}
+          </dd>
         </dl>
         <Button tag={Link} to="/post" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

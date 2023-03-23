@@ -11,22 +11,25 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Spring Data JPA repository for the Post entity.
+ *
+ * When extending this class, extend PostRepositoryWithBagRelationships too.
+ * For more information refer to https://github.com/jhipster/generator-jhipster/issues/17990.
  */
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
+public interface PostRepository extends PostRepositoryWithBagRelationships, JpaRepository<Post, Long> {
     @Query("select post from Post post where post.user.login = ?#{principal.username}")
     List<Post> findByUserIsCurrentUser();
 
     default Optional<Post> findOneWithEagerRelationships(Long id) {
-        return this.findOneWithToOneRelationships(id);
+        return this.fetchBagRelationships(this.findOneWithToOneRelationships(id));
     }
 
     default List<Post> findAllWithEagerRelationships() {
-        return this.findAllWithToOneRelationships();
+        return this.fetchBagRelationships(this.findAllWithToOneRelationships());
     }
 
     default Page<Post> findAllWithEagerRelationships(Pageable pageable) {
-        return this.findAllWithToOneRelationships(pageable);
+        return this.fetchBagRelationships(this.findAllWithToOneRelationships(pageable));
     }
 
     @Query(

@@ -1,14 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Button, Table } from 'reactstrap';
+import { Button, Container, Table } from 'reactstrap';
 import { Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Heading,
+  Stack,
+  Box,
+  Center,
+  ButtonGroup,
+  Divider,
+  Image,
+  Text,
+  Flex,
+  SimpleGrid,
+} from '@chakra-ui/react';
 
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 import { IPost } from 'app/shared/model/post.model';
 import { getEntities } from './post.reducer';
+import FlowerCard from '../flower/flower-card';
 
 export const Post = () => {
   const dispatch = useAppDispatch();
@@ -16,11 +33,11 @@ export const Post = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const postList = useAppSelector(state => state.post.entities);
+  const postList = useAppSelector<IPost[]>(state => state.post.entities);
   const loading = useAppSelector(state => state.post.loading);
 
   useEffect(() => {
-    dispatch(getEntities({}));
+    dispatch(getEntities({ query: 'eagerload=true' }));
   }, []);
 
   const handleSyncList = () => {
@@ -43,7 +60,50 @@ export const Post = () => {
           </Link>
         </div>
       </h2>
-      <div className="table-responsive">
+      <Container mt={12}>
+        <Flex flexWrap="wrap" gridGap={2} justify="center">
+          {postList?.map(({ name, date, user, id, flowers }, i) => (
+            <Card maxW="sm" key={i} padding="4" margin={4}>
+              <Center bg="pink" color="gray.50" h="100px">
+                <Heading size="md">{name}</Heading>
+              </Center>
+              <CardBody>
+                <Flex justify="center" alignItems={'center'}>
+                  {flowers?.map(flower => (
+                    <FlowerCard key={flower.id} {...{ flower }} />
+                  ))}
+                </Flex>
+              </CardBody>
+              {/* <Divider /> */}
+              <Flex justify="center" alignItems={'center'}>
+                <CardFooter>
+                  <ButtonGroup spacing="2">
+                    {/* <Button tag={Link} to={`/post/${id}`} color="info" size="sm" data-cy="entityDetailsButton">
+                  <FontAwesomeIcon icon="eye" />{' '}
+                  <span className="d-none d-md-inline">
+                    <Translate contentKey="entity.action.view">View</Translate>
+                  </span>
+                </Button> */}
+                    <Button tag={Link} to={`/post/${id}/edit`} color="primary" size="sm" data-cy="entityEditButton">
+                      <FontAwesomeIcon icon="pencil-alt" />{' '}
+                      <span className="d-none d-md-inline">
+                        <Translate contentKey="entity.action.edit">Edit</Translate>
+                      </span>
+                    </Button>
+                    <Button tag={Link} to={`/post/${id}/delete`} color="danger" size="sm" data-cy="entityDeleteButton">
+                      <FontAwesomeIcon icon="trash" />{' '}
+                      <span className="d-none d-md-inline">
+                        <Translate contentKey="entity.action.delete">Delete</Translate>
+                      </span>
+                    </Button>
+                  </ButtonGroup>
+                </CardFooter>
+              </Flex>
+            </Card>
+          ))}
+        </Flex>
+      </Container>
+      {/* <div className="table-responsive">
         {postList && postList.length > 0 ? (
           <Table responsive>
             <thead>
@@ -77,7 +137,16 @@ export const Post = () => {
                   <td>{post.name}</td>
                   <td>{post.date}</td>
                   <td>{post.user ? post.user.login : ''}</td>
-                  <td>{post.flower ? <Link to={`/flower/${post.flower.id}`}>{post.flower.id}</Link> : ''}</td>
+                  <td>
+                    {post.flowers
+                      ? post.flowers.map((val, j) => (
+                          <span key={j}>
+                            <Link to={`/flower/${val.id}`}>{val.name}</Link>
+                            {j === post.flowers.length - 1 ? '' : ', '}
+                          </span>
+                        ))
+                      : null}
+                  </td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/post/${post.id}`} color="info" size="sm" data-cy="entityDetailsButton">
@@ -103,15 +172,15 @@ export const Post = () => {
                 </tr>
               ))}
             </tbody>
-          </Table>
-        ) : (
-          !loading && (
-            <div className="alert alert-warning">
-              <Translate contentKey="blogApp.post.home.notFound">No Posts found</Translate>
-            </div>
-          )
-        )}
-      </div>
+          </Table> */}
+      {/* // ) : (
+        //   !loading && (
+        //     <div className="alert alert-warning">
+        //       <Translate contentKey="blogApp.post.home.notFound">No Posts found</Translate>
+        //     </div>
+        //   )
+        // )}
+      </div> */}
     </div>
   );
 };
