@@ -2,7 +2,7 @@
   "blogApp": {
     "post": {
       "home": {
-        "title": "Blog Posts",
+        "title": "Posts",
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Post",
         "createOrEditLabel": "Create or edit a Post",

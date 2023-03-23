@@ -14,9 +14,15 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
+        <addForeignKeyConstraint baseColumnNames="post_id"
+                                 baseTableName="rel_post__flower"
+                                 constraintName="fk_rel_post__flower__post_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="post"/>
+
         <addForeignKeyConstraint baseColumnNames="flower_id"
-                                 baseTableName="post"
-                                 constraintName="fk_post__flower_id"
+                                 baseTableName="rel_post__flower"
+                                 constraintName="fk_rel_post__flower__flower_id"
                                  referencedColumnNames="id"
                                  referencedTableName="flower"/>
     </changeSet>

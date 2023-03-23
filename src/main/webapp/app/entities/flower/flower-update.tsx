@@ -8,6 +8,8 @@ import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateT
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
+import { IPost } from 'app/shared/model/post.model';
+import { getEntities as getPosts } from 'app/entities/post/post.reducer';
 import { ILocation } from 'app/shared/model/location.model';
 import { getEntities as getLocations } from 'app/entities/location/location.reducer';
 import { IFlower } from 'app/shared/model/flower.model';
@@ -21,6 +23,7 @@ export const FlowerUpdate = () => {
   const { id } = useParams<'id'>();
   const isNew = id === undefined;
 
+  const posts = useAppSelector(state => state.post.entities);
   const locations = useAppSelector(state => state.location.entities);
   const flowerEntity = useAppSelector(state => state.flower.entity);
   const loading = useAppSelector(state => state.flower.loading);
@@ -38,6 +41,7 @@ export const FlowerUpdate = () => {
       dispatch(getEntity(id));
     }
 
+    dispatch(getPosts({}));
     dispatch(getLocations({}));
   }, []);
 

@@ -33,7 +33,7 @@
       "otherEntityRelationshipName": "flower",
       "ownerSide": false,
       "relationshipName": "post",
-      "relationshipType": "one-to-many"
+      "relationshipType": "many-to-many"
     },
     {
       "otherEntityName": "location",

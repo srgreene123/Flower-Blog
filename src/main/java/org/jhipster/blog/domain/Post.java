@@ -2,6 +2,8 @@ package org.jhipster.blog.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -31,9 +33,11 @@ public class Post implements Serializable {
     @ManyToOne
     private User user;
 
-    @ManyToOne
+    @ManyToMany
+    @JoinTable(name = "rel_post__flower", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "flower_id"))
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "posts", "locations" }, allowSetters = true)
-    private Flower flower;
+    private Set<Flower> flowers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -89,16 +93,28 @@ public class Post implements Serializable {
         return this;
     }
 
-    public Flower getFlower() {
-        return this.flower;
+    public Set<Flower> getFlowers() {
+        return this.flowers;
     }
 
-    public void setFlower(Flower flower) {
-        this.flower = flower;
+    public void setFlowers(Set<Flower> flowers) {
+        this.flowers = flowers;
     }
 
-    public Post flower(Flower flower) {
-        this.setFlower(flower);
+    public Post flowers(Set<Flower> flowers) {
+        this.setFlowers(flowers);
+        return this;
+    }
+
+    public Post addFlower(Flower flower) {
+        this.flowers.add(flower);
+        flower.getPosts().add(this);
+        return this;
+    }
+
+    public Post removeFlower(Flower flower) {
+        this.flowers.remove(flower);
+        flower.getPosts().remove(this);
         return this;
     }
 

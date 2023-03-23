@@ -31,7 +31,7 @@
       "otherEntityRelationshipName": "post",
       "ownerSide": true,
       "relationshipName": "flower",
-      "relationshipType": "many-to-one"
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "no"

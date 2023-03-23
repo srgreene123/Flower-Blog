@@ -19,7 +19,7 @@ const apiUrl = 'api/posts';
 // Actions
 
 export const getEntities = createAsyncThunk('post/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
-  const requestUrl = `${apiUrl}?cacheBuster=${new Date().getTime()}`;
+  const requestUrl = `${apiUrl}?cacheBuster=${new Date().getTime()}&eagerload=true`;
   return axios.get<IPost[]>(requestUrl);
 });
 

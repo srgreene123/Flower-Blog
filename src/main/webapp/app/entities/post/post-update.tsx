@@ -55,8 +55,8 @@ export const PostUpdate = () => {
     const entity = {
       ...postEntity,
       ...values,
+      flowers: mapIdList(values.flowers),
       user: users.find(it => it.id.toString() === values.user.toString()),
-      flower: flowers.find(it => it.id.toString() === values.flower.toString()),
     };
 
     if (isNew) {
@@ -72,7 +72,7 @@ export const PostUpdate = () => {
       : {
           ...postEntity,
           user: postEntity?.user?.id,
-          flower: postEntity?.flower?.id,
+          flowers: postEntity?.flowers?.map(e => e.id.toString()),
         };
 
   return (
@@ -112,7 +112,14 @@ export const PostUpdate = () => {
                     ))
                   : null}
               </ValidatedField>
-              <ValidatedField id="post-flower" name="flower" data-cy="flower" label={translate('blogApp.post.flower')} type="select">
+              <ValidatedField
+                label={translate('blogApp.post.flower')}
+                id="post-flower"
+                data-cy="flower"
+                type="select"
+                multiple
+                name="flowers"
+              >
                 <option value="" key="0" />
                 {flowers
                   ? flowers.map(otherEntity => (
