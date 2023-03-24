@@ -9,7 +9,7 @@ export const EntitiesMenu = () => (
     name={translate('global.menu.entities.main')}
     id="entity-menu"
     data-cy="entity"
-    style={{ maxHeight: '80vh', overflow: 'auto' }}
+    style={{ maxHeight: '80vh', overflow: 'auto', color: 'black' }}
   >
     <EntitiesMenuItems />
   </NavDropdown>

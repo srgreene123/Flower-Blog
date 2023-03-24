@@ -10,10 +10,10 @@ type FlowerCardProps = { flower: IFlower };
 const FlowerCard: FC<FlowerCardProps> = props => {
   const { flower } = props;
   return (
-    <Center py={12}>
+    <Center py={12} justifyContent="center" fontFamily="Alegreya">
       <Box
         role={'group'}
-        p={6}
+        p={2}
         maxW={'330px'}
         w={'full'}
         bg={useColorModeValue('white', 'gray.800')}
@@ -49,11 +49,11 @@ const FlowerCard: FC<FlowerCardProps> = props => {
         >
           <Image rounded={'lg'} borderRadius="lg" boxSize="100px" objectFit={'cover'} src={flower.imageLink} />
         </Box>
-        <Stack pt={10} align={'center'}>
+        <Stack pt={10} align={'center'} justify-content="center" fontFamily="Alegreya">
           <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
             {flower.season}
           </Text>
-          <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+          <Heading fontSize={'2xl'} fontWeight={500} fontFamily="Alegreya">
             {flower.name}
           </Heading>
           <Stack direction={'row'} align={'center'}>

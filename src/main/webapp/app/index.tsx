@@ -10,7 +10,7 @@ import { clearAuthentication } from 'app/shared/reducers/authentication';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import AppComponent from 'app/app';
 import { loadIcons } from 'app/config/icon-loader';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ButtonGroup, Text, ChakraProvider, Container, IconButton, Stack } from '@chakra-ui/react';
 
 const store = getStore();
 registerLocale(store);
@@ -31,6 +31,22 @@ const render = Component =>
           <div>
             <Component />
           </div>
+          <Container as="footer" role="contentinfo" py={{ base: '12', md: '16' }}>
+            <Stack spacing={{ base: '4', md: '5' }}>
+              <Stack justify="space-between" direction="row" align="center">
+                {/* <Logo /> */}
+                <ButtonGroup variant="ghost">
+                  {/* <IconButton as="a" href="#" aria-label="LinkedIn" icon={<FaLinkedin fontSize="1.25rem" />} /> */}
+                  {/* <IconButton as="a" href="#" aria-label="GitHub" icon={<FaGithub fontSize="1.25rem" />} /> */}
+                  {/* <IconButton as="a" href="#" aria-label="Twitter" icon={<FaTwitter fontSize="1.25rem" />} /> */}
+                </ButtonGroup>
+              </Stack>
+              <Text fontSize="sm" color="subtle">
+                {/* Blooming */}
+                {/* &copy; {new Date().getFullYear()} Chakra UI Pro, Inc. All rights reserved. */}
+              </Text>
+            </Stack>
+          </Container>
         </Provider>
       </ErrorBoundary>
     </ChakraProvider>

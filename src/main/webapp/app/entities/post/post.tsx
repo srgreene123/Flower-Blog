@@ -49,29 +49,35 @@ export const Post = () => {
 
   return (
     <div>
-      <h2 className="post-heading" data-cy="PostHeading">
-        <Center>
-          <Translate contentKey="blogApp.post.home.title">Posts</Translate>
+      <Flex justifyContent={'center'} alignItems="center">
+        <Box flex={1}></Box>
+        <Center fontFamily="Alegreya" justifyContent={'center'} flex={1}>
+          <h2 className="postHeading" data-cy="PostHeading">
+            <Translate contentKey="blogApp.post.home.title">Posts</Translate>
+          </h2>
         </Center>
-        <div className="d-flex justify-content-end">
+        <ButtonGroup justify-content={'flex-end'} spacing="2" flex="1" flexBasis="0">
           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} />{' '}
             <Translate contentKey="blogApp.post.home.refreshListLabel">Refresh List</Translate>
           </Button>
-          <Link to="/post/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+          <Button tag={Link} to={`/post/new`}>
             <FontAwesomeIcon icon="plus" />
             &nbsp;
             <Translate contentKey="blogApp.post.home.createLabel">Create new Post</Translate>
-          </Link>
-        </div>
-      </h2>
-      <Container mt={12}>
+          </Button>
+        </ButtonGroup>
+      </Flex>
+
+      <Container mt={12} font-Family="Alegreya">
         <Flex flexWrap="wrap" gridGap={2} justify="center">
           {postList?.map(({ name, date, user, id, flowers }, i) => (
             <Card w="85vw" key={i} padding="4" margin={4}>
               <Flex bg="#f4d2d2" color="black" justifyContent="space-between" p="4">
                 <Box flexGrow="1" flexBasis="0"></Box>
-                <Heading size="md">{name}</Heading>
+                <Heading size="lg" fontFamily="Alegreya">
+                  {name}
+                </Heading>
                 <ButtonGroup justifyContent={'flex-end'} spacing="2" flexGrow="1" flexBasis="0">
                   {/* <Button tag={Link} to={`/post/${id}`} color="info" size="sm" data-cy="entityDetailsButton">
                   <FontAwesomeIcon icon="eye" />{' '}
@@ -79,13 +85,13 @@ export const Post = () => {
                     <Translate contentKey="entity.action.view">View</Translate>
                   </span>
                 </Button> */}
-                  <Button tag={Link} to={`/post/${id}/edit`} color="primary" size="sm" data-cy="entityEditButton">
+                  <Button tag={Link} to={`/post/${id}/edit`} color="white" size="sm" data-cy="entityEditButton">
                     <FontAwesomeIcon icon="pencil-alt" />{' '}
                     {/* <span className="d-none d-md-inline">
                         <Translate contentKey="entity.action.edit">Edit</Translate>
                       </span> */}
                   </Button>
-                  <Button tag={Link} to={`/post/${id}/delete`} color="danger" size="sm" data-cy="entityDeleteButton">
+                  <Button tag={Link} to={`/post/${id}/delete`} size="sm" color="white" data-cy="entityDeleteButton">
                     <FontAwesomeIcon icon="trash" />{' '}
                     {/* <span className="d-none d-md-inline">
                         <Translate contentKey="entity.action.delete">Delete</Translate>
@@ -94,7 +100,7 @@ export const Post = () => {
                 </ButtonGroup>
               </Flex>
               <CardBody>
-                <Flex justify="center" alignItems={'flex-start'}>
+                <Flex justify="space-evenly" alignItems="center">
                   {flowers?.map(flower => (
                     <Link to={`/flower/${flower.id}`}>
                       <FlowerCard key={flower.id} {...{ flower }} />

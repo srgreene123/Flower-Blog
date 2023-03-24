@@ -38,6 +38,9 @@ $header-color-hover: darken($header-color, 20%);
 Navbar styles
 ========================================================================== */
 .jh-navbar {
+  a {
+    color: #353d47 !important;
+  }
   background-color: #f7e3e3;
   padding: 0.2em 1em;
   .profile-image {
@@ -97,7 +100,7 @@ Navbar styles
   text-align: center;
   font-size: 40px;
   color: black;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Alegreya';
   font-kerning: normal;
   font-size: 30px;
 

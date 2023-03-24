@@ -6,6 +6,7 @@ import { Translate } from 'react-jhipster';
 import { Row, Col, Alert } from 'reactstrap';
 
 import { useAppSelector } from 'app/config/store';
+import { Box, Flex } from '@chakra-ui/react';
 
 export const Home = () => {
   // const account = useAppSelector(state => state.authentication.account);
@@ -15,14 +16,24 @@ export const Home = () => {
       <Col md="3" className="pad">
         <span className="hipster rounded" />
       </Col>
-      <Col md="9">
+      <Flex flex={1} color="black" marginY="auto">
+        <Box>
+          <h2 className="homeTitle">
+            <Translate contentKey="home.title" />
+          </h2>
+          <p className="homeSubtitle">
+            <Translate contentKey="home.subtitle" />
+          </p>
+        </Box>
+      </Flex>
+      {/* <Col md="9">
         <h2 className="homeTitle">
           <Translate contentKey="home.title" />
         </h2>
         <p className="homeSubtitle">
           <Translate contentKey="home.subtitle" />
-        </p>
-        {/* {account?.login ? (
+        </p> */}
+      {/* {account?.login ? (
           <div>
             <Alert color="success">
               <Translate contentKey="home.logged.message" interpolate={{ username: account.login }}>
@@ -53,7 +64,7 @@ export const Home = () => {
             </Alert>
           </div>
         )} */}
-      </Col>
+      {/* </Col> */}
     </Row>
   );
 };
