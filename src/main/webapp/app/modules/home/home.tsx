@@ -24,6 +24,11 @@ export const Home = () => {
           <p className="homeSubtitle">
             <Translate contentKey="home.subtitle" />
           </p>
+          <p className="homeSubtitle">
+            <Link to={'/post'}>
+              <Translate contentKey="home.subtitle2" />
+            </Link>
+          </p>
         </Box>
       </Flex>
       {/* <Col md="9">
