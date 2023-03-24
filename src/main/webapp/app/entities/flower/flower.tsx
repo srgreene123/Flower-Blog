@@ -16,7 +16,7 @@ export const Flower = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const flowerList = useAppSelector(state => state.flower.entities);
+  const flowerList = useAppSelector<IFlower[]>(state => state.flower.entities);
   const loading = useAppSelector(state => state.flower.loading);
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export const Flower = () => {
                     {flower.locations
                       ? flower.locations.map((val, j) => (
                           <span key={j}>
-                            <Link to={`/location/${val.id}`}>{val.id}</Link>
+                            <Link to={`/location/${val.id}`}>{val.city}</Link>
                             {j === flower.locations.length - 1 ? '' : ', '}
                           </span>
                         ))

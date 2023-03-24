@@ -24,7 +24,7 @@ export const PostUpdate = () => {
   const isNew = id === undefined;
 
   const users = useAppSelector(state => state.userManagement.users);
-  const flowers = useAppSelector(state => state.flower.entities);
+  const flowers = useAppSelector<IFlower[]>(state => state.flower.entities);
   const postEntity = useAppSelector(state => state.post.entity);
   const loading = useAppSelector(state => state.post.loading);
   const updating = useAppSelector(state => state.post.updating);
@@ -124,7 +124,7 @@ export const PostUpdate = () => {
                 {flowers
                   ? flowers.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
+                        {otherEntity.name}
                       </option>
                     ))
                   : null}

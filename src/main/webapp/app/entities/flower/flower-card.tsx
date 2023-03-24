@@ -23,6 +23,8 @@ const FlowerCard: FC<FlowerCardProps> = props => {
         zIndex={1}
       >
         <Box
+          display={'flex'}
+          justifyContent={'center'}
           rounded={'lg'}
           mt={-12}
           pos={'relative'}
@@ -35,8 +37,8 @@ const FlowerCard: FC<FlowerCardProps> = props => {
             pos: 'absolute',
             top: 2,
             left: 0,
-            backgroundImage: `url(${flower.imageLink})`,
-            filter: 'blur(15px)',
+            // backgroundImage: `url(${flower.imageLink})`,
+            // filter: 'blur(15px)',
             zIndex: -1,
           }}
           _groupHover={{
@@ -55,7 +57,7 @@ const FlowerCard: FC<FlowerCardProps> = props => {
             {flower.name}
           </Heading>
           <Stack direction={'row'} align={'center'}>
-            <Text fontWeight={800} fontSize={'l'}>
+            <Text fontWeight={500} fontSize={'s'}>
               {flower.description}
             </Text>
           </Stack>

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
 import { Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +17,8 @@ export const FlowerDetail = () => {
   useEffect(() => {
     dispatch(getEntity(id));
   }, []);
+
+  const navigate = useNavigate();
 
   const flowerEntity = useAppSelector(state => state.flower.entity);
   return (
@@ -63,14 +65,14 @@ export const FlowerDetail = () => {
             {flowerEntity.locations
               ? flowerEntity.locations.map((val, i) => (
                   <span key={val.id}>
-                    <a>{val.id}</a>
+                    <a>{val.name}</a>
                     {flowerEntity.locations && i === flowerEntity.locations.length - 1 ? '' : ', '}
                   </span>
                 ))
               : null}
           </dd>
         </dl>
-        <Button tag={Link} to="/flower" replace color="info" data-cy="entityDetailsBackButton">
+        <Button onClick={() => navigate(-1)} replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}
           <span className="d-none d-md-inline">
             <Translate contentKey="entity.action.back">Back</Translate>
